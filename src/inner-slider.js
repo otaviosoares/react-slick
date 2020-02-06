@@ -104,6 +104,7 @@ export class InnerSlider extends React.Component {
     }
   };
   componentWillUnmount = () => {
+    this.ro.unobserve(this.list);
     if (this.animationEndCallback) {
       clearTimeout(this.animationEndCallback);
     }
@@ -705,7 +706,7 @@ export class InnerSlider extends React.Component {
     let innerSliderProps = {
       className: className,
       dir: "ltr",
-      style:this.props.style
+      style: this.props.style
     };
 
     if (this.props.unslick) {
